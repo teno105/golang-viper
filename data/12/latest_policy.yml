@@ -1,0 +1,31 @@
+---
+latest_policy:
+  terms:
+  - language: Korean
+    version: 1
+    start_date: '2025-02-01'
+    url: https://www.naver.com
+    url_for_txt: terms
+  - language: English
+    version: 1
+    start_date: '2025-02-01'
+    url: https://www.naver.com
+    url_for_txt: terms
+  privacy:
+  - language: Korean
+    version: 1
+    start_date: '2025-02-01'
+    url: https://www.naver.com
+    url_for_txt: 개인정보 정책
+  - language: English
+    version: 1
+    start_date: '2025-02-01'
+    url: https://www.naver.com
+    url_for_txt: privacy policy
+  night_push:
+  - language: Korean
+    version: 1
+    body: 내용1
+  - language: English
+    version: 1
+    body: Body1

@@ -1,0 +1,9 @@
+---
+notice:
+  local_list:
+  - language: Korean
+    title: 제목1
+    body: 내용1
+  - name: English
+    title: Title1
+    body: Body1

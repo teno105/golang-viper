@@ -1,0 +1,17 @@
+---
+version_infos:
+  version_info:
+    store_type: Android
+    version_no: 1.0-99
+    game_server_name: qa_server
+    game_server_url: http://127.0.0.1:9091
+    visible_popup: false
+    latest_version: 1.0-99
+    dynamic_config: ''
+  update_message:
+  - language_type: Korean
+    title: 제목1
+    body: 내용1
+  - language_type: English
+    title: Title1
+    body: Body1

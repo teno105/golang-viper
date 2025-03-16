@@ -1,0 +1,11 @@
+---
+maintenance:
+  message:
+  - language: Korean
+    title: 제목1
+    body: 내용1
+    detailed_url: https://www.naver.com
+  - name: English
+    title: Title1
+    body: Body1
+    detailed_url: https://www.naver.com
