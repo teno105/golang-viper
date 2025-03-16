@@ -8,8 +8,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"golang-apis/infra"
-	"golang-apis/internal/models"
+	"golang-viper/infra"
+	"golang-viper/internal/models"
 )
 
 // GameData 구조체
@@ -33,38 +33,38 @@ func loadGameData(gameID string) (*GameData, error) {
 
 	var gameData GameData
 
-	// in_game_board.json 읽기
-	if err := infra.LoadJSONFile(inGameBoardPath, &gameData); err != nil {
+	// in_game_board.yml 읽기
+	if err := infra.LoadYamlFile(inGameBoardPath, &gameData); err != nil {
 		log.Printf("[WARN] in_game_board.json 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
-	// version_infos.json 읽기
-	if err := infra.LoadJSONFile(versionInfosPath, &gameData); err != nil {
+	// version_infos.yml 읽기
+	if err := infra.LoadYamlFile(versionInfosPath, &gameData); err != nil {
 		log.Printf("[WARN] version_infos.json 파일로딩을 실패 %v", err)
 		return nil, err
 	}
 
-	// latest_policy.json 읽기
-	if err := infra.LoadJSONFile(latestPolicyPath, &gameData); err != nil {
+	// latest_policy.yml 읽기
+	if err := infra.LoadYamlFile(latestPolicyPath, &gameData); err != nil {
 		log.Printf("[WARN] latest_policy.json 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
-	// notice.json 읽기
-	if err := infra.LoadJSONFile(noticePath, &gameData); err != nil {
+	// notice.yml 읽기
+	if err := infra.LoadYamlFile(noticePath, &gameData); err != nil {
 		log.Printf("[WARN] notice.json 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
-	// maintenance.json 읽기
-	if err := infra.LoadJSONFile(maintenancePath, &gameData); err != nil {
+	// maintenance.yml 읽기
+	if err := infra.LoadYamlFile(maintenancePath, &gameData); err != nil {
 		log.Printf("[WARN] maintenance.json 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
-	// store_link.json 읽기
-	if err := infra.LoadJSONFile(storeLinkPath, &gameData); err != nil {
+	// store_link.yml 읽기
+	if err := infra.LoadYamlFile(storeLinkPath, &gameData); err != nil {
 		log.Printf("[WARN] store_link.json 파일로딩을 실패 %v", err)
 		return nil, err
 	}
