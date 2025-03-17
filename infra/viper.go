@@ -44,7 +44,11 @@ func LoadYamlFile(filePath string, target interface{}) error {
 		return err
 	}
 
-	viper.SetConfigFile(filepath.Join(root, filePath))
+	path := filepath.Join(root, filePath)
+	viper.SetConfigFile(path)
+
+	//viper.AddConfigPath(".")
+	//viper.SetConfigFile(filePath)
 
 	if err := viper.ReadInConfig(); err != nil {
 		log.Printf("[WARN] 파일이 존재하지 않음: %s", filePath)

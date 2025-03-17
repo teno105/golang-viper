@@ -5,7 +5,7 @@ maintenance:
     title: 제목1
     body: 내용1
     detailed_url: https://www.naver.com
-  - name: English
+  - language: English
     title: Title1
     body: Body1
     detailed_url: https://www.naver.com

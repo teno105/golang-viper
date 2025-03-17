@@ -24,48 +24,48 @@ type GameData struct {
 
 // 특정 게임 ID에 해당하는 데이터를 로드하는 함수
 func loadGameData(gameID string) (*GameData, error) {
-	inGameBoardPath := filepath.Join("data", gameID, "in_game_board.json")
-	latestPolicyPath := filepath.Join("data", gameID, "latest_policy.json")
-	versionInfosPath := filepath.Join("data", gameID, "version_infos.json")
-	noticePath := filepath.Join("data", gameID, "notice.json")
-	maintenancePath := filepath.Join("data", gameID, "maintenance.json")
-	storeLinkPath := filepath.Join("data", gameID, "store_link.json")
+	inGameBoardPath := filepath.Join("data", gameID, "in_game_board.yml")
+	latestPolicyPath := filepath.Join("data", gameID, "latest_policy.yml")
+	versionInfosPath := filepath.Join("data", gameID, "version_infos.yml")
+	noticePath := filepath.Join("data", gameID, "notice.yml")
+	maintenancePath := filepath.Join("data", gameID, "maintenance.yml")
+	storeLinkPath := filepath.Join("data", gameID, "store_link.yml")
 
 	var gameData GameData
 
 	// in_game_board.yml 읽기
 	if err := infra.LoadYamlFile(inGameBoardPath, &gameData); err != nil {
-		log.Printf("[WARN] in_game_board.json 파일로딩을 실패: %v", err)
+		log.Printf("[WARN] in_game_board.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// version_infos.yml 읽기
 	if err := infra.LoadYamlFile(versionInfosPath, &gameData); err != nil {
-		log.Printf("[WARN] version_infos.json 파일로딩을 실패 %v", err)
+		log.Printf("[WARN] version_infos.yml 파일로딩을 실패 %v", err)
 		return nil, err
 	}
 
 	// latest_policy.yml 읽기
 	if err := infra.LoadYamlFile(latestPolicyPath, &gameData); err != nil {
-		log.Printf("[WARN] latest_policy.json 파일로딩을 실패: %v", err)
+		log.Printf("[WARN] latest_policy.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// notice.yml 읽기
 	if err := infra.LoadYamlFile(noticePath, &gameData); err != nil {
-		log.Printf("[WARN] notice.json 파일로딩을 실패: %v", err)
+		log.Printf("[WARN] notice.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// maintenance.yml 읽기
 	if err := infra.LoadYamlFile(maintenancePath, &gameData); err != nil {
-		log.Printf("[WARN] maintenance.json 파일로딩을 실패: %v", err)
+		log.Printf("[WARN] maintenance.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// store_link.yml 읽기
 	if err := infra.LoadYamlFile(storeLinkPath, &gameData); err != nil {
-		log.Printf("[WARN] store_link.json 파일로딩을 실패 %v", err)
+		log.Printf("[WARN] store_link.yml 파일로딩을 실패 %v", err)
 		return nil, err
 	}
 
