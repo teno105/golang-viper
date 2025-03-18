@@ -2,21 +2,21 @@ package models
 
 // LatestPolicy JSON 구조체
 type LatestPolicy struct {
-	Privacy   []PolicyData `json:"privacy"`
-	Terms     []PolicyData `json:"terms"`
-	NightPush []NightPush  `json:"night_push"`
+	Privacy   []PolicyData `mapstructure:"privacy" json:"privacy"`
+	Terms     []PolicyData `mapstructure:"terms" json:"terms"`
+	NightPush []NightPush  `mapstructure:"night_push" json:"night_push"`
 }
 
 type PolicyData struct {
-	Language  string `json:"language"`
-	Version   int    `json:"version"`
-	StartDate string `json:"start_date"`
-	Url       string `json:"url"`
-	UrlForTxt string `json:"url_for_txt"`
+	Language  string `mapstructure:"language" json:"language"`
+	Version   int    `mapstructure:"version" json:"version"`
+	StartDate string `mapstructure:"start_date" json:"start_date"`
+	Url       string `mapstructure:"url" json:"url"`
+	UrlForTxt string `mapstructure:"url_for_txt" json:"url_for_txt"`
 }
 
 type NightPush struct {
-	Language string `json:"language"`
-	Version  int    `json:"version"`
-	Body     string `json:"body"`
+	Language string `mapstructure:"language" json:"language"`
+	Version  int    `mapstructure:"version" json:"version"`
+	Body     string `mapstructure:"body" json:"body"`
 }

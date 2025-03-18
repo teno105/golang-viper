@@ -2,12 +2,12 @@ package models
 
 // Maintenance JSON 구조체
 type Maintenance struct {
-	Message []MaintenanceMessage `yaml:"message" json:"message"`
+	Message []MaintenanceMessage `mapstructure:"message" json:"message"`
 }
 
 type MaintenanceMessage struct {
-	Language    string `json:"language,omitempty"` // "name" 대신 "language" 사용
-	Title       string `json:"title"`
-	Body        string `json:"body"`
-	DetailedURL string `json:"detailed_url"`
+	Language    string `mapstructure:"language" json:"language,omitempty"`
+	Title       string `mapstructure:"title" json:"title"`
+	Body        string `mapstructure:"body" json:"body"`
+	DetailedURL string `mapstructure:"detailed_url" json:"detailed_url"`
 }
