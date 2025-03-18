@@ -2,7 +2,7 @@ package models
 
 // Maintenance JSON 구조체
 type Maintenance struct {
-	Message []MaintenanceMessage `json:"message"`
+	Message []MaintenanceMessage `yaml:"message" json:"message"`
 }
 
 type MaintenanceMessage struct {
@@ -10,8 +10,4 @@ type MaintenanceMessage struct {
 	Title       string `json:"title"`
 	Body        string `json:"body"`
 	DetailedURL string `json:"detailed_url"`
-}
-
-type MaintenanceRoot struct {
-	Maintenance Maintenance `json:"maintenance"`
 }

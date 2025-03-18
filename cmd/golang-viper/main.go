@@ -12,18 +12,13 @@ import (
 	"golang-viper/internal/models"
 )
 
-// GameData 구조체
-type GameData struct {
-	InGameBoard  models.InGameBoard  `json:"in_game_board"`
-	LatestPolicy models.LatestPolicy `json:"latest_policy"`
-	VersionInfos models.VersionInfos `json:"version_infos"`
-	Notice       models.Notice       `json:"notice"`
-	Maintenance  models.Maintenance  `json:"maintenance"`
-	StoreLink    models.StoreLink    `json:"store_link"`
+type ResponseData struct {
+	Code       string            `json:"code"`
+	ResultData models.ResultData `json:"result_data"`
 }
 
 // 특정 게임 ID에 해당하는 데이터를 로드하는 함수
-func loadGameData(gameID string) (*GameData, error) {
+func loadGameData(gameID string) (*models.ResultData, error) {
 	inGameBoardPath := filepath.Join("data", gameID, "in_game_board.yml")
 	latestPolicyPath := filepath.Join("data", gameID, "latest_policy.yml")
 	versionInfosPath := filepath.Join("data", gameID, "version_infos.yml")
@@ -31,45 +26,45 @@ func loadGameData(gameID string) (*GameData, error) {
 	maintenancePath := filepath.Join("data", gameID, "maintenance.yml")
 	storeLinkPath := filepath.Join("data", gameID, "store_link.yml")
 
-	var gameData GameData
+	var resultData models.ResultData
 
 	// in_game_board.yml 읽기
-	if err := infra.LoadYamlFile(inGameBoardPath, &gameData); err != nil {
+	if err := infra.LoadYamlFile(inGameBoardPath, &resultData); err != nil {
 		log.Printf("[WARN] in_game_board.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// version_infos.yml 읽기
-	if err := infra.LoadYamlFile(versionInfosPath, &gameData); err != nil {
+	if err := infra.LoadYamlFile(versionInfosPath, &resultData); err != nil {
 		log.Printf("[WARN] version_infos.yml 파일로딩을 실패 %v", err)
 		return nil, err
 	}
 
 	// latest_policy.yml 읽기
-	if err := infra.LoadYamlFile(latestPolicyPath, &gameData); err != nil {
+	if err := infra.LoadYamlFile(latestPolicyPath, &resultData); err != nil {
 		log.Printf("[WARN] latest_policy.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// notice.yml 읽기
-	if err := infra.LoadYamlFile(noticePath, &gameData); err != nil {
+	if err := infra.LoadYamlFile(noticePath, &resultData); err != nil {
 		log.Printf("[WARN] notice.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// maintenance.yml 읽기
-	if err := infra.LoadYamlFile(maintenancePath, &gameData); err != nil {
+	if err := infra.LoadYamlFile(maintenancePath, &resultData); err != nil {
 		log.Printf("[WARN] maintenance.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 
 	// store_link.yml 읽기
-	if err := infra.LoadYamlFile(storeLinkPath, &gameData); err != nil {
+	if err := infra.LoadYamlFile(storeLinkPath, &resultData); err != nil {
 		log.Printf("[WARN] store_link.yml 파일로딩을 실패 %v", err)
 		return nil, err
 	}
 
-	return &gameData, nil
+	return &resultData, nil
 }
 
 func main() {
