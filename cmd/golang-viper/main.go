@@ -73,13 +73,19 @@ func main() {
 
 	// GET /v2/init_data/games/:id 엔드포인트
 	r.GET("/v2/init_data/games/:id", func(c *gin.Context) {
-		gameID := c.Param("id")           // URL에서 game ID 가져오기
-		data, err := loadGameData(gameID) // 해당 ID의 데이터를 로드
+		gameID := c.Param("id")                 // URL에서 game ID 가져오기
+		resultData, err := loadGameData(gameID) // 해당 ID의 데이터를 로드
 		if err != nil {
 			c.JSON(http.StatusNotFound, gin.H{"error": "Game data not found"})
 			return
 		}
-		c.JSON(http.StatusOK, data)
+
+		// 결과 데이터를 JSON으로 반환
+		res := ResponseData{
+			Code:       "0",
+			ResultData: *resultData,
+		}
+		c.JSON(http.StatusOK, res)
 	})
 
 	// 서버 실행
