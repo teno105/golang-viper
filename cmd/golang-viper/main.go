@@ -19,36 +19,15 @@ type ResponseData struct {
 
 // 특정 게임 ID에 해당하는 데이터를 로드하는 함수
 func loadGameData(gameID string) (*models.ResultData, error) {
-	inGameBoardPath := filepath.Join("data", gameID, "in_game_board.yml")
-	latestPolicyPath := filepath.Join("data", gameID, "latest_policy.yml")
 	versionInfosPath := filepath.Join("data", gameID, "version_infos.yml")
-	noticePath := filepath.Join("data", gameID, "notice.yml")
 	maintenancePath := filepath.Join("data", gameID, "maintenance.yml")
 	storeLinkPath := filepath.Join("data", gameID, "store_link.yml")
 
 	var resultData models.ResultData
 
-	// in_game_board.yml 읽기
-	if err := infra.LoadYamlFile(inGameBoardPath, &resultData); err != nil {
-		log.Printf("[WARN] in_game_board.yml 파일로딩을 실패: %v", err)
-		return nil, err
-	}
-
 	// version_infos.yml 읽기
 	if err := infra.LoadYamlFile(versionInfosPath, &resultData); err != nil {
 		log.Printf("[WARN] version_infos.yml 파일로딩을 실패 %v", err)
-		return nil, err
-	}
-
-	// latest_policy.yml 읽기
-	if err := infra.LoadYamlFile(latestPolicyPath, &resultData); err != nil {
-		log.Printf("[WARN] latest_policy.yml 파일로딩을 실패: %v", err)
-		return nil, err
-	}
-
-	// notice.yml 읽기
-	if err := infra.LoadYamlFile(noticePath, &resultData); err != nil {
-		log.Printf("[WARN] notice.yml 파일로딩을 실패: %v", err)
 		return nil, err
 	}
 

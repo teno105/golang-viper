@@ -2,10 +2,14 @@
 maintenance:
   message:
   - language: Korean
-    title: 제목1
-    body: 내용1
-    detailed_url: https://www.naver.com
+    title: 점검 테스트 제목
+    body: 점검 테스트 내용
+    detailed_url: https://www.peppercon.co.kr
   - language: English
-    title: Title1
+    title: Maintenance Test Title
+    body: Maintenance Test Body
+    detailed_url: https://www.peppercon.co.kr
+  - language: Japanese
+    title: タイトル
     body: Body1
-    detailed_url: https://www.naver.com
+    detailed_url: https://www.peppercon.co.kr

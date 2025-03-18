@@ -2,39 +2,9 @@ package models
 
 // ResultData JSON 구조체
 type ResultData struct {
-	InGameBoard  InGameBoard  `mapstructure:"in_game_board" json:"in_game_board"`
-	LatestPolicy LatestPolicy `mapstructure:"latest_policy" json:"latest_policy"`
 	VersionInfos VersionInfos `mapstructure:"version_infos" json:"version_infos"`
-	Notice       Notice       `mapstructure:"notice" json:"notice"`
 	Maintenance  Maintenance  `mapstructure:"maintenance" json:"maintenance"`
 	StoreLink    StoreLink    `mapstructure:"store_link" json:"store_link"`
-}
-
-// InGameBoard JSON 구조체
-type InGameBoard struct {
-	Display bool   `mapstructure:"display" json:"display"`
-	Url     string `mapstructure:"url" json:"url"`
-}
-
-// LatestPolicy JSON 구조체
-type LatestPolicy struct {
-	Privacy   []PolicyData `mapstructure:"privacy" json:"privacy"`
-	Terms     []PolicyData `mapstructure:"terms" json:"terms"`
-	NightPush []NightPush  `mapstructure:"night_push" json:"night_push"`
-}
-
-type PolicyData struct {
-	Language  string `mapstructure:"language" json:"language"`
-	Version   int    `mapstructure:"version" json:"version"`
-	StartDate string `mapstructure:"start_date" json:"start_date"`
-	Url       string `mapstructure:"url" json:"url"`
-	UrlForTxt string `mapstructure:"url_for_txt" json:"url_for_txt"`
-}
-
-type NightPush struct {
-	Language string `mapstructure:"language" json:"language"`
-	Version  int    `mapstructure:"version" json:"version"`
-	Body     string `mapstructure:"body" json:"body"`
 }
 
 // VersionInfos JSON 구조체
@@ -57,17 +27,6 @@ type UpdateMessageData struct {
 	LanguageType string `mapstructure:"language_type" json:"language_type"`
 	Title        string `mapstructure:"title" json:"title"`
 	Body         string `mapstructure:"body" json:"body"`
-}
-
-// Notice JSON 구조체
-type Notice struct {
-	LocalList []LanguageData `mapstructure:"local_list" json:"local_list"`
-}
-
-type LanguageData struct {
-	Language string `mapstructure:"language" json:"language,omitempty"`
-	Title    string `mapstructure:"title" json:"title"`
-	Body     string `mapstructureon:"body" json:"body"`
 }
 
 // Maintenance JSON 구조체

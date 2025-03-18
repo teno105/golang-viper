@@ -3,8 +3,8 @@ version_infos:
   version_info:
     store_type: Android
     version_no: 1.0-99
-    game_server_name: qa_server
-    game_server_url: http://127.0.0.1:9091
+    game_server_name: awsdev2
+    game_server_url: https://awsdev2.peppercon.co.kr
     visible_popup: false
     latest_version: 1.0-99
     dynamic_config: ''
