@@ -1,26 +1,27 @@
-# golang-apis
+# golang-viper
 
-`golang-apis` 는 Golang으로 작성된 json 파일들을 gin으로 받아오는 프로젝트입니다.<br/>
-게임이 실행될 때, 접속할 서버정보와 공지사항, 개인정보 정책 등을 얻어옵니다.
+`go-viper` 는 Go 애플리케이션에서 설정을 쉽게 관리할 수 있도록 도와주는 라이브러리입니다.<br/>
+JSON, YAML, TOML, ENV 등 다양한 설정 파일 형식을 지원하며, 환경 변수, 플래그, 기본값 설정 등도 함께 사용할 수 있습니다.
 
 ## 프로젝트 폴더 구조
 ```plaintext
-golang-apis/
+golang-viper/
 │
 ├── cmd/
-│   └── golang-apis/
+│   └── golang-viper/
 │        └── main.go
 │
-├── infra/
-│   ├── db.go
+├── example/
+│   ├── ex_1.go
+│   ├── xxxx.go
+│   ├── xxxx.go
+│   ├── xxxx.go
+│   ├── xxxx.go
 │   └── file.go
 │
 ├── internal/
 │   └── models/
-│        ├── in_game_board.go
-│        ├── latest_policy.go
 │        ├── maintenance.go
-│        ├── notice.go
 │        ├── store_link.go
 │        └── version_infos.go
 │
@@ -40,7 +41,6 @@ golang-apis/
 
 ### infra 폴더 설명
 file.go : /Data 에서 struct GameData 의 Type에 맞는 데이터를 가져오는 함수가 정의 되어있습니다.<br/>
-db.go : gorm 을 통해서 DB에 있는 데이터를 가져오는 함수가 정의 되어있습니다. (구현 예정)
 
 ### internal/models 폴더 설명
 GameData 가 가지는 Data를 struct 형태로 정의되어 있습니다.
@@ -50,27 +50,31 @@ GameData 가 가지는 Data를 struct 형태로 정의되어 있습니다.
 
 ## 주요 기능
 
-### file.go
+### ex_1.go
 ```go
-func getProjectRoot() string {
-	dir, err := os.Getwd()  // 현재 폴더 경로 확인 (/전체경로/cmd/golang-apis)
-	if err != nil {
-		log.Fatal(err)
+import (
+	"fmt"
+	"log"
+
+	"github.com/spf13/viper"
+)
+
+func main() {
+	// 설정 파일 이름과 확장자 지정
+	viper.SetConfigName("config") // config.yaml
+	viper.SetConfigType("yaml")   // 파일 타입 지정
+	viper.AddConfigPath(".")      // 현재 디렉토리에서 설정 파일 찾기
+
+	// 설정 파일 읽기
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("설정 파일 읽기 실패: %v", err)
 	}
 
-	for {
-		if _, err := os.Stat(filepath.Join(dir, "go.mod")); err == nil { // 경로상에 go.mod 파일이 존재하는지 확인
-			return dir
-		}
-		parent := filepath.Dir(dir) // 부모 디렉토리로 경로 변경
-		if parent == dir {
-			break
-		}
-		dir = parent
-	}
+	// 값 가져오기
+	host := viper.GetString("database.host")
+	port := viper.GetInt("database.port")
 
-	log.Fatal("go.mod 파일을 찾을 수 없습니다.")
-	return ""
+	fmt.Printf("DB Host: %s, Port: %d\n", host, port)
 }
 ```
 go.mod 파일을 기준으로 프로젝트 RootPath를 찾습니다.<br/>
