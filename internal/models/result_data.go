@@ -9,8 +9,7 @@ type ResultData struct {
 
 // VersionInfos JSON 구조체
 type VersionInfos struct {
-	VersionInfo   VersionInfo         `mapstructure:"version_info" json:"version_info"`
-	UpdateMessage []UpdateMessageData `mapstructure:"update_message" json:"update_message"`
+	VersionInfo VersionInfo `mapstructure:"version_info" json:"version_info"`
 }
 
 type VersionInfo struct {
@@ -21,12 +20,6 @@ type VersionInfo struct {
 	VisiblePopup   bool   `mapstructure:"visible_popup" json:"visible_popup"`
 	LatestVersion  string `mapstructure:"latest_version" json:"latest_version"`
 	DynamicConfig  string `mapstructure:"dynamic_config" json:"dynamic_config"`
-}
-
-type UpdateMessageData struct {
-	LanguageType string `mapstructure:"language_type" json:"language_type"`
-	Title        string `mapstructure:"title" json:"title"`
-	Body         string `mapstructure:"body" json:"body"`
 }
 
 // Maintenance JSON 구조체
